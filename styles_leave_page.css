@@ -21,7 +21,7 @@
 
 body, html {
   height: 100%;
-  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-family: 'VT323', monospace;
   background: var(--bg-dark);
   color: var(--text-light);
   overflow: hidden;
@@ -70,7 +70,7 @@ main {
 
 .container {
   width: 100%;
-  max-width: 1200px; /* Increased from 600px to accommodate Malayalam text */
+  max-width: 800px; /* Optimized for English text */
   padding: 2rem;
   text-align: center;
   background: rgba(13, 13, 13, 0.9);
@@ -95,6 +95,7 @@ main {
 }
 
 .glitch-text {
+  font-family: 'Orbitron', monospace;
   font-size: 3rem;
   font-weight: 700;
   color: var(--text-light);
@@ -399,6 +400,7 @@ main {
 }
 
 .popup-title {
+  font-family: 'Orbitron', monospace;
   font-size: 2rem;
   color: var(--neon-pink);
   margin-bottom: 1rem;
@@ -419,7 +421,7 @@ main {
   font-size: 1.1rem;
   border-radius: 10px;
   cursor: none; /* Remove default cursor on popup close */
-  font-family: 'Noto Sans Malayalam', sans-serif;
+  font-family: 'VT323', monospace;
   transition: all 0.3s ease;
 }
 
