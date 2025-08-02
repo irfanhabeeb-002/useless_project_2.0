@@ -54,17 +54,17 @@ python -m http.server 8000
 
 ### Screenshots (Add at least 3)
 
-![Main Theme Park](screenshots/main-theme-park.png) **Main Theme Park Landing Page**: The hero section featuring "DIGITAL THEME PARK" in glowing neon green and magenta gradient, with floating orbs, "Enter the dopamine zone" tagline, and the "ENTER THE CARNIVAL" call-to-action button against a dark background.
+![Main Theme Park](assets/main-theme-park.png) **Main Theme Park Landing Page**: The hero section featuring "DIGITAL THEME PARK" in glowing neon green and magenta gradient, with floating orbs, "Enter the dopamine zone" tagline, and the "ENTER THE CARNIVAL" call-to-action button against a dark background.
 
-![Four Interactive Booths](screenshots/four-booths.png) **Choose Your Distraction Section**: The theme park map showing four interactive booths arranged in a 2x2 grid - ChaosBot (theatrical masks), TimeWaster (blue spiral), Leave Page (eye symbol), and Make Everything OK (green checkmark) - each with unique icons and descriptions.
+![Four Interactive Booths](assets/four-booths.png) **Choose Your Distraction Section**: The theme park map showing four interactive booths arranged in a 2x2 grid - ChaosBot (theatrical masks), TimeWaster (blue spiral), Leave Page (eye symbol), and Make Everything OK (green checkmark) - each with unique icons and descriptions.
 
-![ChaosBot Interface](screenshots/chaosbot.png) **ChaosBot - The Oracle of Nonsense**: Features the tagline "This chatbot once gaslit a goldfish" with psychological manipulation quotes, a prominent "START DERAILING YOUR LIFE" button with pink-to-cyan gradient, and secondary action buttons for chaos initiation.
+![ChaosBot Interface](assets/chaosbot.png) **ChaosBot - The Oracle of Nonsense**: Features the tagline "This chatbot once gaslit a goldfish" with psychological manipulation quotes, a prominent "START DERAILING YOUR LIFE" button with pink-to-cyan gradient, and secondary action buttons for chaos initiation.
 
-![TimeWaster Dashboard](screenshots/timewaster.png) **TimeWaster - Weaponized Procrastination Engine**: Displays the title with cyan-to-magenta gradient, subtitle "You're not lazy. You're just ahead of the curve", input field for time specification, and the main "WASTE MY TIME" button with humorous disclaimer.
+![TimeWaster Dashboard](assets/timewaster.png) **TimeWaster - Weaponized Procrastination Engine**: Displays the title with cyan-to-magenta gradient, subtitle "You're not lazy. You're just ahead of the curve", input field for time specification, and the main "WASTE MY TIME" button with humorous disclaimer.
 
-![Leave Page](screenshots/leave-page.png) **Leave Page - The Abandonment Exhibit**: Shows the escape-themed interface with psychological manipulation elements and failed escape attempt tracking.
+![Leave Page](assets/leave-page.png) **Leave Page - The Abandonment Exhibit**: Shows the escape-themed interface with psychological manipulation elements and failed escape attempt tracking.
 
-![Make Everything OK](screenshots/make-everything-ok.png) **Make Everything OK - The Illusion Chamber**: Features "FIX YOUR LIFE.EXE" title with cyan glow, "Click to begin your transformation..." instruction, and the main "MAKE EVERYTHING OK" button with neon cyan border.
+![Make Everything OK](assets/make-everything-ok.png) **Make Everything OK - The Illusion Chamber**: Features "FIX YOUR LIFE.EXE" title with cyan glow, "Click to begin your transformation..." instruction, and the main "MAKE EVERYTHING OK" button with neon cyan border.
 
 ### Diagrams
 
