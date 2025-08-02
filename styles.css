@@ -204,9 +204,12 @@ body {
 /* Booths Grid */
 .booths-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
     margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .booth {
@@ -214,7 +217,7 @@ body {
     background: rgba(26, 26, 26, 0.8);
     border: 2px solid transparent;
     border-radius: 15px;
-    padding: 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -223,6 +226,12 @@ body {
     text-decoration: none;
     display: block;
     color: inherit;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
 }
 
 .booth::before {
@@ -278,26 +287,26 @@ body {
 }
 
 .booth-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .booth-title {
     font-family: 'Orbitron', monospace;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
     color: #ffffff;
 }
 
 .booth-subtitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #cccccc;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .booth-hover-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #888888;
     opacity: 0;
     transform: translateY(10px);
@@ -402,11 +411,25 @@ body {
     
     .booths-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
+        max-width: 90vw;
     }
     
     .booth {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
+        min-height: 250px;
+    }
+    
+    .booth-icon {
+        font-size: 3rem;
+    }
+    
+    .booth-title {
+        font-size: 1.5rem;
+    }
+    
+    .booth-subtitle {
+        font-size: 1rem;
     }
     
     .map-title {
@@ -430,6 +453,28 @@ body {
     
     .park-map {
         padding: 2rem 1rem;
+    }
+    
+    .booths-grid {
+        max-width: 95vw;
+        gap: 1.5rem;
+    }
+    
+    .booth {
+        padding: 1.5rem 1rem;
+        min-height: 200px;
+    }
+    
+    .booth-icon {
+        font-size: 2.5rem;
+    }
+    
+    .booth-title {
+        font-size: 1.3rem;
+    }
+    
+    .booth-subtitle {
+        font-size: 0.9rem;
     }
 }
 

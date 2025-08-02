@@ -250,8 +250,8 @@ function updateQuestion() {
   if (state.interactionCount > 1) {
     const glitchLayer = questionEl.querySelector('.glitch-layer');
     if (glitchLayer) {
-      glitchLayer.textContent = "വീണ്ടും ചോദിക്കണോ?";
-      glitchLayer.setAttribute('data-text', "വീണ്ടും ചോദിക്കണോ?");
+      glitchLayer.textContent = "Should i ask again?";
+      glitchLayer.setAttribute('data-text', "Should i ask again?");
     }
     
     // Add extra glitch effect
