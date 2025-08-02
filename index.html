@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Theme Park - Where Productivity Goes to Die</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor trail effect -->
+    <div class="cursor-trail"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">DIGITAL THEME PARK</h1>
+            <div class="tagline-container">
+                <p class="tagline active" data-index="0">Productivity is a prison. Here's your key.</p>
+                <p class="tagline" data-index="1">You came for focus. You'll leave questioning reality.</p>
+                <p class="tagline" data-index="2">Enter the dopamine zone.</p>
+                <p class="tagline" data-index="3">Where time goes to get lost.</p>
+            </div>
+            <button class="portal-btn" id="enterCarnival">
+                <span class="btn-text">🎟 Enter The Carnival</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+        <div class="hero-background">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </div>
+    </section>
+
+    <!-- Theme Park Map Section -->
+    <section class="park-map" id="parkMap">
+        <div class="map-container">
+            <h2 class="map-title">Choose Your Distraction</h2>
+            <div class="booths-grid">
+                <!-- Booth 1: ChaosBot -->
+                <div class="booth booth-1" data-booth="chaosbot">
+                    <div class="booth-glow"></div>
+                    <div class="booth-content">
+                        <div class="booth-icon">🎭</div>
+                        <h3 class="booth-title">ChaosBot</h3>
+                        <p class="booth-subtitle">The Oracle of Nonsense</p>
+                        <p class="booth-hover-text">Predicts nothing. Derails everything.</p>
+                    </div>
+                    <div class="booth-particles"></div>
+                </div>
+
+                <!-- Booth 2: TimeWaster -->
+                <div class="booth booth-2" data-booth="timewaster">
+                    <div class="booth-glow"></div>
+                    <div class="booth-content">
+                        <div class="booth-icon">🌀</div>
+                        <h3 class="booth-title">TimeWaster</h3>
+                        <p class="booth-subtitle">The Time Sinkhole</p>
+                        <p class="booth-hover-text">You thought you were being productive. Cute.</p>
+                    </div>
+                    <div class="booth-particles"></div>
+                </div>
+
+                <!-- Booth 3: Leave Page -->
+                <div class="booth booth-3" data-booth="leavepage">
+                    <div class="booth-glow"></div>
+                    <div class="booth-content">
+                        <div class="booth-icon">👁</div>
+                        <h3 class="booth-title">Leave Page</h3>
+                        <p class="booth-subtitle">The Abandonment Exhibit</p>
+                        <p class="booth-hover-text">Try to escape. Just try.</p>
+                    </div>
+                    <div class="booth-particles"></div>
+                </div>
+
+                <!-- Booth 4: Make Everything OK -->
+                <div class="booth booth-4" data-booth="makeok">
+                    <div class="booth-glow"></div>
+                    <div class="booth-content">
+                        <div class="booth-icon">✅</div>
+                        <h3 class="booth-title">Make Everything OK</h3>
+                        <p class="booth-subtitle">The Illusion Chamber</p>
+                        <p class="booth-hover-text">All problems solved. Just not yours.</p>
+                    </div>
+                    <div class="booth-particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for booth interactions -->
+    <div class="modal" id="boothModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Booth Experience</h3>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
