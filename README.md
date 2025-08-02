@@ -20,7 +20,7 @@ A digital theme park with four interactive "attractions" that use psychological 
 ### Technologies/Components Used
 
 **For Software:**
-- **Languages used:** HTML5, CSS3, JavaScript (Vanilla)
+- **Languages used:** HTML5, CSS3, JavaScript
 - **Frameworks used:** None (Pure vanilla implementation)
 - **Libraries used:** Google Fonts (Orbitron, VT323, Space Mono, Inter, JetBrains Mono)
 - **Tools used:** Visual Studio Code, Git, Web Browser Developer Tools
@@ -54,11 +54,17 @@ python -m http.server 8000
 
 ### Screenshots (Add at least 3)
 
-![Main Theme Park](index.html) Add caption explaining what this shows: The main landing page featuring the "Choose Your Distraction" theme park map with four interactive booths arranged in a grid layout.
+![Main Theme Park](screenshots/main-theme-park.png) **Main Theme Park Landing Page**: The hero section featuring "DIGITAL THEME PARK" in glowing neon green and magenta gradient, with floating orbs, "Enter the dopamine zone" tagline, and the "ENTER THE CARNIVAL" call-to-action button against a dark background.
 
-![ChaosBot Interface](chaosbot.html) Add caption explaining what this shows: The ChaosBot chatbot interface with glitch effects and psychological manipulation elements designed to derail conversations.
+![Four Interactive Booths](screenshots/four-booths.png) **Choose Your Distraction Section**: The theme park map showing four interactive booths arranged in a 2x2 grid - ChaosBot (theatrical masks), TimeWaster (blue spiral), Leave Page (eye symbol), and Make Everything OK (green checkmark) - each with unique icons and descriptions.
 
-![TimeWaster Dashboard](time_waster.html) Add caption explaining what this shows: The TimeWaster booth featuring a live timer, achievement system, and buttons to artificially add wasted time.
+![ChaosBot Interface](screenshots/chaosbot.png) **ChaosBot - The Oracle of Nonsense**: Features the tagline "This chatbot once gaslit a goldfish" with psychological manipulation quotes, a prominent "START DERAILING YOUR LIFE" button with pink-to-cyan gradient, and secondary action buttons for chaos initiation.
+
+![TimeWaster Dashboard](screenshots/timewaster.png) **TimeWaster - Weaponized Procrastination Engine**: Displays the title with cyan-to-magenta gradient, subtitle "You're not lazy. You're just ahead of the curve", input field for time specification, and the main "WASTE MY TIME" button with humorous disclaimer.
+
+![Leave Page](screenshots/leave-page.png) **Leave Page - The Abandonment Exhibit**: Shows the escape-themed interface with psychological manipulation elements and failed escape attempt tracking.
+
+![Make Everything OK](screenshots/make-everything-ok.png) **Make Everything OK - The Illusion Chamber**: Features "FIX YOUR LIFE.EXE" title with cyan glow, "Click to begin your transformation..." instruction, and the main "MAKE EVERYTHING OK" button with neon cyan border.
 
 ### Diagrams
 
@@ -68,9 +74,6 @@ python -m http.server 8000
 
 **Video**
 [Add your demo video link here] Explain what the video demonstrates: A walkthrough of the Digital Theme Park showing the psychological manipulation techniques, interactive elements, and how each booth creates addictive user experiences.
-
-**Additional Demos**
-[Add any extra demo materials/links] Live demo links, interactive prototypes, or additional documentation showcasing the psychological design patterns.
 
 ## Team Contributions
 
@@ -82,5 +85,3 @@ python -m http.server 8000
 
 Made with ❤ at TinkerHub Useless Projects
 
-[![Static Badge](https://img.shields.io/badge/TinkerHub-Useless%20Projects-blue)](https://tinkerhub.org)
-[![Static Badge](https://img.shields.io/badge/Status-Complete-green)](https://github.com/your-repo) 
