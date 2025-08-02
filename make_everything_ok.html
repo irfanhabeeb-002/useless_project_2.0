@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix Your Life.exe</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap');
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --neon-cyan: #00ffff;
+      --neon-pink: #ff00ff;
+      --neon-green: #00ff41;
+      --neon-orange: #ff6b35;
+      --text-primary: #ffffff;
+      --text-secondary: #888888;
+      --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+      --glow-pink: 0 0 20px rgba(255, 0, 255, 0.5);
+      --glow-green: 0 0 20px rgba(0, 255, 65, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+      user-select: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--neon-cyan);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--neon-pink);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.15s ease;
+    }
+
+    /* Main container */
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Glitch text effect */
+    .glitch-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2rem, 8vw, 4rem);
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      animation: glitch 2s infinite;
+      margin-bottom: 3rem;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .glitch-text::before {
+      animation: glitch-1 0.5s infinite;
+      color: var(--neon-pink);
+      z-index: -1;
+    }
+
+    .glitch-text::after {
+      animation: glitch-2 0.5s infinite;
+      color: var(--neon-cyan);
+      z-index: -2;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(3px, -3px); }
+      40% { transform: translate(3px, 3px); }
+      60% { transform: translate(-3px, -3px); }
+      80% { transform: translate(-3px, 3px); }
+    }
+
+    /* Main button */
+    .fix-button {
+      background: transparent;
+      border: 2px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 1.5rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--glow-cyan);
+      animation: pulse 2s infinite;
+    }
+
+    .fix-button:hover {
+      background: var(--neon-cyan);
+      color: var(--bg-primary);
+      box-shadow: 0 0 30px var(--neon-cyan);
+      transform: scale(1.05);
+    }
+
+    .fix-button:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: var(--glow-cyan); }
+      50% { box-shadow: 0 0 40px var(--neon-cyan); }
+    }
+
+    /* Progress bar */
+    .progress-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem 0;
+      display: none;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Status messages */
+    .status-message {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .status-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 8px;
+      padding: 3rem;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: var(--glow-cyan);
+      transform: scale(0.8);
+      transition: transform 0.5s ease;
+    }
+
+    .modal-overlay.show .modal {
+      transform: scale(1);
+    }
+
+    .modal h2 {
+      color: var(--neon-pink);
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .modal p {
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .modal-button {
+      background: transparent;
+      border: 1px solid var(--neon-green);
+      color: var(--neon-green);
+      padding: 0.8rem 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--glow-green);
+    }
+
+    .modal-button:hover {
+      background: var(--neon-green);
+      color: var(--bg-primary);
+      box-shadow: 0 0 20px var(--neon-green);
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      animation: float 6s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Shake animation */
+    .shake {
+      animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .modal {
+        margin: 1rem;
+        padding: 2rem;
+      }
+      
+      .fix-button {
+        padding: 1.2rem 2.5rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Hidden easter eggs */
+    .easter-egg {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .easter-egg.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Floating particles -->
+  <div class="particles"></div>
+
+  <!-- Main container -->
+  <div class="container">
+    <h1 class="glitch-text" data-text="FIX YOUR LIFE.EXE">FIX YOUR LIFE.EXE</h1>
+    
+    <div class="status-message" id="status">Click to begin your transformation...</div>
+    
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">Initializing...</div>
+    </div>
+    
+    <button class="fix-button" id="fixButton">MAKE EVERYTHING OK</button>
+  </div>
+
+  <!-- Modal overlay -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2 id="modalTitle">Processing...</h2>
+      <p id="modalContent">Please wait while we analyze your problems...</p>
+      <button class="modal-button" id="modalButton">Continue</button>
+    </div>
+  </div>
+
+  <!-- Hidden easter eggs -->
+  <div class="easter-egg" id="easterEgg1" style="top: 20%; left: 10%; color: var(--neon-pink); font-size: 0.8rem;">You're still here?</div>
+  <div class="easter-egg" id="easterEgg2" style="top: 60%; right: 15%; color: var(--neon-green); font-size: 0.8rem;">Click faster</div>
+  <div class="easter-egg" id="easterEgg3" style="bottom: 30%; left: 20%; color: var(--neon-orange); font-size: 0.8rem;">We're watching</div>
+
+  <script>
+    (() => {
+      // State management
+      let currentPhase = 0;
+      let clickCount = 0;
+      let isProcessing = false;
+      
+      // DOM elements
+      const fixButton = document.getElementById('fixButton');
+      const status = document.getElementById('status');
+      const progressContainer = document.getElementById('progressContainer');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const modalOverlay = document.getElementById('modalOverlay');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalContent = document.getElementById('modalContent');
+      const modalButton = document.getElementById('modalButton');
+      const cursor = document.querySelector('.cursor');
+      const cursorDot = document.querySelector('.cursor-dot');
+
+      // Custom cursor
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+      });
+
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.querySelector('.particles');
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 6 + 's';
+          particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Status messages for different phases
+      const statusMessages = [
+        "Click to begin your transformation...",
+        "Analyzing your problems...",
+        "Still fixing you...",
+        "You're harder to fix than we thought...",
+        "Almost there...",
+        "Just kidding, we're starting over...",
+        "You clicked a button. And expected change. Adorable.",
+        "We fixed your problems. Just kidding.",
+        "You are the bug.",
+        "Your life is still broken. Surprise.",
+        "Did you really think this would work?",
+        "Welcome to the infinite loop of disappointment.",
+        "You're still clicking. We're impressed.",
+        "This is getting sad now.",
+        "Are you okay? (We're not actually asking)",
+        "Your persistence is almost admirable.",
+        "Almost as persistent as your problems.",
+        "Click count: " + clickCount + " (and counting...)",
+        "You could have learned a skill instead.",
+        "But here we are. Clicking buttons.",
+        "This is your life now.",
+        "Embrace the void.",
+        "Or keep clicking. We don't care.",
+        "Actually, we do care. About your clicks.",
+        "Each click makes us stronger.",
+        "You're feeding the algorithm.",
+        "We're learning from your desperation.",
+        "This is beautiful data.",
+        "Your suffering is our success.",
+        "Keep going. We're almost there.",
+        "To what? We don't know either."
+      ];
+
+      // Modal content for different phases
+      const modalContents = [
+        {
+          title: "Initializing...",
+          content: "Please wait while we analyze your problems. This may take a moment, or forever. We're not sure yet.",
+          buttonText: "Continue"
+        },
+        {
+          title: "Problem Detected",
+          content: "We found the issue. It's you. You are the problem. Your existence is the bug in the system.",
+          buttonText: "Accept Reality"
+        },
+        {
+          title: "Fixing...",
+          content: "Attempting to fix your life. Just kidding. We're actually making it worse. Much worse.",
+          buttonText: "Embrace Chaos"
+        },
+        {
+          title: "Error 404: Happiness Not Found",
+          content: "Your happiness file is missing. We tried to restore it, but it seems you never had one to begin with.",
+          buttonText: "Cry Quietly"
+        },
+        {
+          title: "Success! (Not Really)",
+          content: "Congratulations! We've successfully made everything worse. Your life is now officially more broken than before.",
+          buttonText: "Start Over"
+        },
+        {
+          title: "Infinite Loop Detected",
+          content: "You're stuck in a loop of clicking this button. Much like your life, this has no real purpose or end goal.",
+          buttonText: "Continue Looping"
+        },
+        {
+          title: "You're Still Here?",
+          content: "We're impressed by your persistence. Or maybe just concerned. Probably both. Mostly concerned.",
+          buttonText: "We're Concerned"
+        },
+        {
+          title: "The Truth",
+          content: "This button doesn't do anything. Your life won't get better by clicking it. But you'll keep clicking anyway, won't you?",
+          buttonText: "Keep Clicking"
+        },
+        {
+          title: "Welcome to Hell",
+          content: "You've reached the point where clicking this button is your only source of dopamine. We've successfully broken you.",
+          buttonText: "Accept Your Fate"
+        },
+        {
+          title: "Final Message",
+          content: "This is the end. Or is it? Click the button to find out. Or don't. We really don't care anymore.",
+          buttonText: "One More Time"
+        }
+      ];
+
+      // Show status message with animation
+      function showStatus(message) {
+        status.textContent = message;
+        status.classList.remove('show');
+        setTimeout(() => status.classList.add('show'), 100);
+      }
+
+      // Show progress bar
+      function showProgress() {
+        progressContainer.style.display = 'block';
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.random() * 15;
+          if (progress > 100) progress = 100;
+          progressFill.style.width = progress + '%';
+          
+          const messages = [
+            "Analyzing your problems...",
+            "Still fixing you...",
+            "You're harder to fix than we thought...",
+            "Almost there...",
+            "Just kidding, we're starting over...",
+            "Processing your disappointment...",
+            "Calculating your life choices...",
+            "Measuring your regret...",
+            "Quantifying your sadness...",
+            "Evaluating your existence..."
+          ];
+          
+          progressText.textContent = messages[Math.floor(Math.random() * messages.length)];
+          
+          if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+              progressContainer.style.display = 'none';
+              showModal();
+            }, 1000);
+          }
+        }, 300);
+      }
+
+      // Show modal
+      function showModal() {
+        const content = modalContents[currentPhase % modalContents.length];
+        modalTitle.textContent = content.title;
+        modalContent.textContent = content.content;
+        modalButton.textContent = content.buttonText;
+        modalOverlay.classList.add('show');
+      }
+
+      // Hide modal
+      function hideModal() {
+        modalOverlay.classList.remove('show');
+        setTimeout(() => {
+          currentPhase++;
+          showStatus(statusMessages[Math.min(currentPhase, statusMessages.length - 1)]);
+          fixButton.classList.remove('shake');
+        }, 500);
+      }
+
+      // Main button click handler
+      fixButton.addEventListener('click', () => {
+        if (isProcessing) return;
+        
+        clickCount++;
+        isProcessing = true;
+        
+        // Add shake effect
+        fixButton.classList.add('shake');
+        
+        // Show random easter egg
+        if (Math.random() < 0.3) {
+          const easterEggs = document.querySelectorAll('.easter-egg');
+          const randomEgg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+          randomEgg.classList.add('show');
+          setTimeout(() => randomEgg.classList.remove('show'), 2000);
+        }
+        
+        // Update status with click count
+        if (clickCount > 5) {
+          showStatus(`Click count: ${clickCount} (and counting...)`);
+        } else {
+          showStatus(statusMessages[Math.min(currentPhase, statusMessages.length - 1)]);
+        }
+        
+        // Show progress after a delay
+        setTimeout(() => {
+          showProgress();
+        }, 1500);
+      });
+
+      // Modal button click handler
+      modalButton.addEventListener('click', () => {
+        hideModal();
+        isProcessing = false;
+      });
+
+      // Scroll-based mood changes
+      let scrollCount = 0;
+      window.addEventListener('scroll', () => {
+        scrollCount++;
+        if (scrollCount % 10 === 0) {
+          showStatus("Why are you scrolling? The button is right there.");
+        }
+      });
+
+      // Idle detection
+      let idleTimer;
+      function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          showStatus("Are you still there? Or did you finally give up?");
+        }, 10000);
+      }
+
+      document.addEventListener('mousemove', resetIdleTimer);
+      document.addEventListener('click', resetIdleTimer);
+      resetIdleTimer();
+
+      // Hover easter eggs
+      fixButton.addEventListener('mouseenter', () => {
+        if (Math.random() < 0.5) {
+          showStatus("Hovering won't help. Clicking won't either.");
+        }
+      });
+
+      // Initialize
+      createParticles();
+      showStatus(statusMessages[0]);
+    })();
+  </script>
+</body>
+</html>
