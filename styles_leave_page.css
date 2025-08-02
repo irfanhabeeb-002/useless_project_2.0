@@ -29,6 +29,44 @@ body, html {
   font-size: 16px; /* Prevent zoom on mobile */
 }
 
+/* Back button - escape route (but not really) */
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 0, 128, 0.1);
+  border: 2px solid var(--neon-pink);
+  border-radius: 25px;
+  color: var(--neon-pink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+  background: rgba(255, 0, 128, 0.2);
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+  transform: translateX(-5px);
+}
+
+.back-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.back-text {
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* Custom cursor */
 .custom-cursor {
   position: fixed;

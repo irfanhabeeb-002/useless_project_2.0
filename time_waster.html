@@ -404,9 +404,53 @@
     .secret-mode:hover {
       color: #00ffff;
     }
+
+    /* Back button styles */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(0, 255, 255, 0.1);
+      border: 2px solid #00ffff;
+      border-radius: 25px;
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-button:hover {
+      background: rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      transform: translateX(-5px);
+    }
+
+    .back-icon {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .back-text {
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 <body>
+  <!-- Back button -->
+  <a href="index.html#parkMap" class="back-button">
+    <span class="back-icon">←</span>
+    <span class="back-text">Back to Theme Park</span>
+  </a>
+  
   <div class="custom-cursor"></div>
   <div class="background-gradient"></div>
   <div class="floating-elements"></div>
